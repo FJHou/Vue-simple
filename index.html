@@ -1,0 +1,35 @@
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+    <p>{{count}}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+    <button v-on:click="countPlus">增加计数</button>
+  </div>
+</body>
+<script src="./index.js"></script>
+<script src="./observer.js"></script>
+<script src="./compile.js"></script>
+<script src="./watcher.js"></script>
+<script src="./dependence.js"></script>
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue.js!',
+      count: 0
+    },
+    methods: {
+      reverseMessage: function () {
+        this.message = this.message.split('').reverse().join('')
+      },
+      countPlus: function () {
+        this.count += 1
+      }
+    },
+    mounted: function () {
+      setTimeout(() => {
+        this.message = 'I am changed after mounte';
+      }, 2000);
+    },
+  });
+</script>
