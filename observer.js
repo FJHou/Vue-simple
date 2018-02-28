@@ -16,6 +16,7 @@ Observer.prototype = {
 
   defineReactive: function (key, val) {
     const dep = new Dep()
+    // 深度遍历一个对象 为其添加一个defineProperty
     const observeChild = observe(val)
 
     Object.defineProperty(this.data, key, {
@@ -43,7 +44,7 @@ Observer.prototype = {
   }
 }
 
-const observe = function (value, vm) {
+const observe = function (value) {
   if (!value || typeof value !== 'object') {
     return
   }

@@ -10,6 +10,7 @@ const Vue = function (opts) {
 Vue.prototype = {
   init: function () {
     Object.keys(this.data).forEach((key) => {
+      // 代理，可直接用this.xx 访问 this.data.xx
       this.proxy(key)
     })
 
